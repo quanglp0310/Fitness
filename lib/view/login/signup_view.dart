@@ -1,4 +1,6 @@
 import 'package:fitness/common/colo_extension.dart';
+import 'package:fitness/common_widget/round_button.dart';
+import 'package:fitness/common_widget/round_textfield.dart';
 import 'package:flutter/material.dart';
 
 class SignUpView extends StatefulWidget {
@@ -9,56 +11,177 @@ class SignUpView extends StatefulWidget {
 }
 
 class _SignUpViewState extends State<SignUpView> {
+  bool isCheck = false;
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: TColor.white,
       body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              "Hey there",
-              style: TextStyle(color: TColor.gray, fontSize: 16),
-            ),
-            Text(
-              "Create an Account",
-              style: TextStyle(
-                color: TColor.gray,
-                fontSize: 20,
-                fontWeight: FontWeight.w700,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                "Hey there",
+                style: TextStyle(color: TColor.gray, fontSize: 16),
               ),
-            ),
-            SizedBox(height: media.width * 0.05),
-            Container(
-              decoration: BoxDecoration(
-                color: TColor.lightGray,
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: TextField(
-                decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.symmetric(
-                    vertical: 4,
-                    horizontal: 15,
-                  ),
-                  enabledBorder: InputBorder.none,
-                  focusedBorder: InputBorder.none,
-                  hintText: "Fist Name",
-                  prefixIcon: Container(
-                    alignment: Alignment.center,
-                    child: Image.asset(
-                      "assets/img/user_text.png",
-                      width: 15,
-                      height: 15,
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                  hintStyle: TextStyle(color: TColor.gray, fontSize: 16),
+              Text(
+                "Create an Account",
+                style: TextStyle(
+                  color: TColor.gray,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
-            ),
-          ],
+              SizedBox(height: media.width * 0.05),
+              const RoundTextfield(
+                hintText: 'Fist Name',
+                icon: 'assets/img/user_text.png',
+              ),
+              SizedBox(height: media.width * 0.04),
+              const RoundTextfield(
+                hintText: 'Last Name',
+                icon: 'assets/img/user_text.png',
+              ),
+              SizedBox(height: media.width * 0.04),
+              const RoundTextfield(
+                hintText: 'Email ',
+                icon: 'assets/img/email.png',
+                keyboardType: TextInputType.emailAddress,
+              ),
+              SizedBox(height: media.width * 0.04),
+              RoundTextfield(
+                hintText: 'PassWord',
+                icon: 'assets/img/lock.png',
+                obscureText: true,
+                rightIcon: TextButton(
+                  onPressed: () {},
+                  child: Container(
+                    alignment: Alignment.center,
+                    width: 20,
+                    height: 20,
+                    child: Image.asset(
+                      "asset/img/show_password",
+                      width: 20,
+                      height: 20,
+                      fit: BoxFit.contain,
+                      color: TColor.gray,
+                    ),
+                  ),
+                ),
+              ),
+              Row(
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      setState(() {
+                        isCheck = !isCheck;
+                      });
+                    },
+                    icon: Icon(
+                      isCheck
+                          ? Icons.check_box_outlined
+                          : Icons.check_box_outline_blank,
+                      color: TColor.gray,
+                      size: 20,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8),
+                    child: Expanded(
+                      child: Text(
+                        "By continuing you accept our Privacy Policy and\nTerm of Use",
+                        style: TextStyle(color: TColor.gray, fontSize: 10),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: media.width * 0.4),
+              RoundButton(title: "Register", onPressed: () {}),
+              SizedBox(height: media.width * 0.04),
+              Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 1,
+                      color: TColor.gray.withOpacity(0.5),
+                    ),
+                  ),
+                  Text(
+                    "Or",
+                    style: TextStyle(color: TColor.black, fontSize: 12),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 1,
+                      color: TColor.gray.withOpacity(0.5),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: media.width * 0.04),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      width: 50,
+                      height: 50,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: TColor.white,
+                        border: Border.all(
+                          width: 1,
+                          color: TColor.gray.withOpacity(0.5),
+                        ),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Image.asset("assets/img/google.png"),
+                    ),
+                  ),
+                  SizedBox(width: media.width * 0.04),
+                  GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      width: 50,
+                      height: 50,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: TColor.white,
+                        border: Border.all(
+                          width: 1,
+                          color: TColor.gray.withOpacity(0.5),
+                        ),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Image.asset("assets/img/facebook.png"),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: media.width * 0.04),
+              TextButton(
+                onPressed: () {},
+                child: Row(
+                  mainAxisSize: MainAxisSize.min, // Chiếm đúng nội dung
+                  children: [
+                    Text(
+                      "Already have an account? Login",
+                      style: TextStyle(
+                        color: TColor.black,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
