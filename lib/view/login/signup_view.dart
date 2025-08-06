@@ -1,6 +1,7 @@
 import 'package:fitness/common/colo_extension.dart';
 import 'package:fitness/common_widget/round_button.dart';
 import 'package:fitness/common_widget/round_textfield.dart';
+import 'package:fitness/view/login/complete_profile_view.dart';
 import 'package:flutter/material.dart';
 
 class SignUpView extends StatefulWidget {
@@ -23,6 +24,7 @@ class _SignUpViewState extends State<SignUpView> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              SizedBox(height: media.width * 0.08),
               Text(
                 "Hey there",
                 style: TextStyle(color: TColor.gray, fontSize: 16),
@@ -53,7 +55,7 @@ class _SignUpViewState extends State<SignUpView> {
               ),
               SizedBox(height: media.width * 0.04),
               RoundTextfield(
-                hintText: 'PassWord',
+                hintText: 'Password',
                 icon: 'assets/img/lock.png',
                 obscureText: true,
                 rightIcon: TextButton(
@@ -63,7 +65,7 @@ class _SignUpViewState extends State<SignUpView> {
                     width: 20,
                     height: 20,
                     child: Image.asset(
-                      "asset/img/show_password",
+                      "assets/img/show_password.png",
                       width: 20,
                       height: 20,
                       fit: BoxFit.contain,
@@ -100,7 +102,17 @@ class _SignUpViewState extends State<SignUpView> {
                 ],
               ),
               SizedBox(height: media.width * 0.4),
-              RoundButton(title: "Register", onPressed: () {}),
+              RoundButton(
+                title: "Register",
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CompleteProfileView(),
+                    ),
+                  );
+                },
+              ),
               SizedBox(height: media.width * 0.04),
               Row(
                 children: [
