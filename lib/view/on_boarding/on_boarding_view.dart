@@ -1,5 +1,6 @@
 import 'package:fitness/common/colo_extension.dart';
 import 'package:fitness/common_widget/on_boarding_page.dart';
+import 'package:fitness/view/login/signup_view.dart';
 import 'package:flutter/material.dart';
 
 class OnBoardingView extends StatefulWidget {
@@ -113,7 +114,12 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                         );
                       } else {
                         // Nếu đã đến trang cuối
-                        print("Welcome");
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SignUpView(),
+                          ),
+                        );
                       }
                     },
                     icon: Icon(Icons.navigate_next, color: TColor.white),
