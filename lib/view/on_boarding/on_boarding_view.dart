@@ -106,7 +106,11 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                       if (selectPage < 3) {
                         // Nếu chưa phải trang cuối, chuyển trang
                         selectPage = selectPage + 1;
-                        controller.jumpToPage(selectPage);
+                        controller.animateToPage(
+                          selectPage,
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.bounceInOut,
+                        );
                       } else {
                         // Nếu đã đến trang cuối
                         print("Welcome");
