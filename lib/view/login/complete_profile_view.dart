@@ -22,6 +22,7 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
         child: SafeArea(
           child: Column(
             children: [
+              SizedBox(height: media.width * 0.07),
               Image.asset(
                 "assets/img/complete_profile.png",
                 width: media.width,

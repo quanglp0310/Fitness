@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:fitness/common/colo_extension.dart';
 import 'package:fitness/common_widget/round_button.dart';
+import 'package:fitness/view/login/welcome_view.dart';
 import 'package:flutter/material.dart';
 
 class WhatYourGoalView extends StatefulWidget {
@@ -127,18 +128,19 @@ class _WhatYourGoalViewState extends State<WhatYourGoalView> {
                     style: TextStyle(color: TColor.gray, fontSize: 12),
                   ),
                   const Spacer(),
-                  SizedBox(height: media.width * 0.05),
+
                   RoundButton(
                     title: "Confirm",
                     onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const WhatYourGoalView(),
+                          builder: (context) => const WelcomeView(),
                         ),
                       );
                     },
                   ),
+                  SizedBox(height: media.width * 0.03),
                 ],
               ),
             ),
