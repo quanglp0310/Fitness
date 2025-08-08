@@ -11,7 +11,7 @@ class RoundButton extends StatelessWidget {
   const RoundButton({
     super.key,
     required this.title,
-    this.type = RoundButtonType.textGradient,
+    this.type = RoundButtonType.bgGradient,
     required this.onPressed,
   });
 
@@ -29,8 +29,8 @@ class RoundButton extends StatelessWidget {
             ? [
                 BoxShadow(
                   color: Colors.black26,
-                  blurRadius: 2,
-                  offset: Offset(0, 2),
+                  blurRadius: 0.5,
+                  offset: Offset(0, 0.5),
                 ),
               ]
             : null,
